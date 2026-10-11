@@ -14,11 +14,17 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme:
+      - darkly
+      - custom.scss
     toc: true
     toc-depth: 3
-    code-fold: true
+    code-fold: false
     code-tools: true
     code-overflow: wrap
+    code-line-numbers: false
+    highlight-style: github-dark
     fig-align: center
     embed-resources: true
+    smooth-scroll: true
+    link-external-newwindow: true

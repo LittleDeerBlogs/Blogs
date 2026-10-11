@@ -1,0 +1,349 @@
+/*-- scss:defaults --*/
+// ---- Typography ----
+$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$font-family-monospace: "JetBrains Mono", "Fira Code", Consolas, monospace;
+$font-size-root: 17px;
+$line-height-base: 1.7;
+
+// ---- Dark Theme Colors ----
+$primary: #4fc3f7;
+$secondary: #90a4ae;
+
+$body-bg: #0f1419;
+$body-color: #d4d9de;
+
+$link-color: $primary;
+$link-hover-color: lighten($primary, 10%);
+
+$code-bg: #1a1f26;
+$code-color: #e6e6e6;
+$code-block-bg: #1a1f26;
+$code-block-border-left: $primary;
+
+$border-color: #2a3138;
+$card-bg: #161b22;
+
+$navbar-bg: #0d1117;
+$navbar-fg: #d4d9de;
+$navbar-hl: $primary;
+
+$footer-bg: #0d1117;
+$footer-fg: #8b949e;
+
+$table-border-color: #2a3138;
+$table-striped-bg: #161b22;
+
+/*-- scss:rules --*/
+// ---- Global ----
+body {
+  background-color: $body-bg;
+  color: $body-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ---- Headings ----
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+h1.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #4fc3f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h2 {
+  margin-top: 2.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid $border-color;
+}
+
+h3 {
+  margin-top: 1.75rem;
+  color: #e6edf3;
+}
+
+// ---- Paragraphs & Lists ----
+p {
+  margin-bottom: 1.1rem;
+}
+
+a {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+a:hover {
+  border-bottom-color: $primary;
+}
+
+// ---- Code Blocks (always visible, polished) ----
+pre.sourceCode {
+  background-color: $code-bg !important;
+  border: 1px solid $border-color;
+  border-left: 3px solid $primary;
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+  font-size: 0.92em;
+  line-height: 1.6;
+  overflow-x: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+// Inline code
+code:not(pre code) {
+  background-color: $code-bg;
+  color: #ff8a80;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.88em;
+  border: 1px solid $border-color;
+}
+
+// Code toolbar (copy button)
+.code-tools-button {
+  background-color: $code-bg !important;
+  border: 1px solid $border-color !important;
+  color: #8b949e !important;
+}
+
+.code-tools-button:hover {
+  background-color: lighten($code-bg, 5%) !important;
+  color: $primary !important;
+}
+
+// ---- Printed Output (stdout) ----
+.cell-output-stdout {
+  background-color: #0d1117;
+  border-left: 3px solid #3fb950;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  font-family: $font-family-monospace;
+  font-size: 0.88em;
+  color: #c9d1d9;
+  margin: 0.5rem 0 1.5rem 0;
+  overflow-x: auto;
+}
+
+.cell-output-stderr {
+  background-color: #1a0f0f;
+  border-left: 3px solid #f85149;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  font-family: $font-family-monospace;
+  font-size: 0.88em;
+  color: #ffa198;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+// ---- Plots and Figures ----
+.cell-output-display img,
+.quarto-figure img {
+  border-radius: 8px;
+  border: 1px solid $border-color;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  background-color: #ffffff;
+  padding: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+// ---- Tables (pandas DataFrames, etc.) ----
+.dataframe {
+  font-family: $font-family-monospace;
+  font-size: 0.85em;
+  border-collapse: collapse;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.dataframe th {
+  background-color: #1f2630;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid $primary;
+  text-align: left;
+}
+
+.dataframe td {
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid $border-color;
+  color: #c9d1d9;
+}
+
+.dataframe tr:nth-child(even) td {
+  background-color: #13181e;
+}
+
+.dataframe tr:hover td {
+  background-color: #1a1f26;
+}
+
+table:not(.dataframe) {
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+table:not(.dataframe) th {
+  background-color: #1f2630;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid $primary;
+  color: #ffffff;
+}
+
+table:not(.dataframe) td {
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid $border-color;
+}
+
+// ---- Blockquotes ----
+blockquote {
+  border-left: 4px solid $primary;
+  padding: 0.5rem 1.25rem;
+  color: #a0a8b0;
+  font-style: italic;
+  background-color: #13181e;
+  border-radius: 0 6px 6px 0;
+  margin: 1.25rem 0;
+}
+
+// ---- Callouts ----
+.callout {
+  border-radius: 8px;
+  border-left-width: 4px;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.callout-note { background-color: #131d29; border-left-color: #4fc3f7; }
+.callout-tip { background-color: #0f1f17; border-left-color: #3fb950; }
+.callout-warning { background-color: #241b0f; border-left-color: #d29922; }
+.callout-important { background-color: #1f0f14; border-left-color: #f85149; }
+
+// ---- Navbar ----
+.navbar {
+  background-color: $navbar-bg !important;
+  border-bottom: 1px solid $border-color;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #ffffff !important;
+  letter-spacing: -0.01em;
+}
+
+.navbar .nav-link {
+  color: $navbar-fg !important;
+  transition: color 0.15s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: $primary !important;
+}
+
+// ---- TOC (sidebar) ----
+#TOC {
+  font-size: 0.9em;
+}
+
+#TOC a {
+  color: #8b949e;
+  border-bottom: none;
+  transition: color 0.15s ease;
+}
+
+#TOC a:hover,
+#TOC a.active {
+  color: $primary;
+}
+
+#TOC .toc-title {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+// ---- Post Metadata ----
+.quarto-title-meta {
+  color: #8b949e;
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.95em;
+}
+
+.quarto-title-meta-heading {
+  color: #8b949e !important;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  letter-spacing: 0.05em;
+}
+
+// ---- Homepage Listing ----
+.quarto-listing .card,
+.quarto-post {
+  background-color: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.quarto-post:hover {
+  border-color: $primary;
+  transform: translateY(-2px);
+}
+
+.quarto-post .listing-title {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.15em;
+}
+
+.quarto-post .listing-description {
+  color: #8b949e;
+  margin-top: 0.5rem;
+}
+
+.quarto-post .listing-categories .listing-category {
+  background-color: #1f2630;
+  color: $primary;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.8em;
+  margin-right: 0.35rem;
+}
+
+// ---- Footer ----
+.nav-footer {
+  background-color: $footer-bg;
+  border-top: 1px solid $border-color;
+  color: $footer-fg;
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+}
+
+// ---- Scrollbar (webkit) ----
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: $body-bg; }
+::-webkit-scrollbar-thumb { background: #2a3138; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: $primary; }
+
+// ---- Selection ----
+::selection {
+  background-color: rgba(79, 195, 247, 0.3);
+  color: #ffffff;
+}
