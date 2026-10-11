@@ -1,0 +1,9 @@
+---
+title: "LittleDeerBlogs"
+listing:
+  contents:
+    - posts/**/index.qmd
+    - posts/**/index.ipynb
+  sort: "date desc"
+  type: default
+---
